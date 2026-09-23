@@ -1,0 +1,63 @@
+{
+  "institution": {
+    "name": "SMPN 3 CIBUNGBULANG",
+    "sub_name": "Perpustakaan Digital & Pusat Sumber Belajar",
+    "npsn": "20200877",
+    "address": "Jl. Kapten Dasuki Bakri, Cibatok 1, Kec. Cibungbulang, Kab. Bogor, Jawa Barat 16630",
+    "email": "perpustakaan@smpn3cibungbulang.sch.id",
+    "phone": "(0251) 8645000",
+    "website": "http://smpn3cibungbulang.sch.id",
+    "postal_code": "16630",
+    "librarian_in_charge": "Kepala Perpustakaan SMPN 3 Cibungbulang",
+    "operating_hours": {
+      "senin_kamis": "07.30 - 15.00 WIB",
+      "jumat": "07.30 - 11.30 & 13.00 - 15.00 WIB",
+      "sabtu_minggu": "Tutup"
+    }
+  },
+  "circulation_rules": {
+    "siswa": {
+      "loan_limit": 3,
+      "loan_period_days": 7,
+      "reborrow_limit": 1,
+      "fine_per_day": 500,
+      "grace_period_days": 1
+    },
+    "guru": {
+      "loan_limit": 10,
+      "loan_period_days": 30,
+      "reborrow_limit": 2,
+      "fine_per_day": 0,
+      "grace_period_days": 3
+    },
+    "staf": {
+      "loan_limit": 5,
+      "loan_period_days": 14,
+      "reborrow_limit": 1,
+      "fine_per_day": 200,
+      "grace_period_days": 2
+    }
+  },
+  "member_types": [
+    { "id": "SW-7", "name": "Siswa Kelas 7", "period_days": 365, "loan_limit": 3 },
+    { "id": "SW-8", "name": "Siswa Kelas 8", "period_days": 365, "loan_limit": 3 },
+    { "id": "SW-9", "name": "Siswa Kelas 9", "period_days": 365, "loan_limit": 3 },
+    { "id": "GUR", "name": "Guru / Pendidik", "period_days": 730, "loan_limit": 10 },
+    { "id": "STF", "name": "Tenaga Kependidikan", "period_days": 730, "loan_limit": 5 }
+  ],
+  "collection_types": [
+    { "code": "TXT", "name": "Buku Pelajaran (Paket/Tematik)", "can_loan": true },
+    { "code": "REF", "name": "Buku Referensi / Ensiklopedia", "can_loan": false },
+    { "code": "FIK", "name": "Buku Cerita / Fiksi / Novel", "can_loan": true },
+    { "code": "NON", "name": "Buku Pengayaan Non-Fiksi", "can_loan": true },
+    { "code": "DIG", "name": "Koleksi Digital / E-Book PDF", "can_loan": true }
+  ],
+  "location_shelves": [
+    { "code": "RAK-01", "name": "Rak 01 - Buku Pelajaran IPA & Matematika" },
+    { "code": "RAK-02", "name": "Rak 02 - Buku Pelajaran Bahasa & Sastra" },
+    { "code": "RAK-03", "name": "Rak 03 - Buku IPS, Sejarah, & Agama" },
+    { "code": "RAK-04", "name": "Rak 04 - Karya Umum, Ensiklopedia, & Kamus" },
+    { "code": "RAK-05", "name": "Rak 05 - Fiksi, Sastra Anak, & Novel" },
+    { "code": "RAK-TANDON", "name": "Koleksi Tandon / Khusus Baca di Tempat" }
+  ]
+}

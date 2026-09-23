@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gradNavy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#1E293B" />
+    </linearGradient>
+    <linearGradient id="gradBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+    <linearGradient id="gradGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#FBBF24" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#0F172A" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Lingkaran Luar -->
+  <circle cx="200" cy="200" r="185" fill="url(#gradNavy)" filter="url(#shadow)" stroke="#0284C7" stroke-width="6" />
+
+  <!-- Cincin Aksen Emas Pendidikan -->
+  <circle cx="200" cy="200" r="165" fill="none" stroke="url(#gradGold)" stroke-width="3" stroke-dasharray="8 6" />
+
+  <!-- Ikon Buku Terbuka (Pusat Pengetahuan) -->
+  <g transform="translate(110, 140)">
+    <!-- Halaman Kiri -->
+    <path d="M90 60 C55 35 15 45 5 50 L5 125 C15 120 55 110 90 135 Z" fill="#FFFFFF" stroke="#0284C7" stroke-width="3" />
+    <!-- Halaman Kanan -->
+    <path d="M90 60 C125 35 165 45 175 50 L175 125 C165 120 125 110 90 135 Z" fill="#F8FAFC" stroke="#0284C7" stroke-width="3" />
+    <!-- Garis Teks Buku -->
+    <line x1="25" y1="75" x2="75" y2="75" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" />
+    <line x1="25" y1="90" x2="70" y2="90" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" />
+    <line x1="25" y1="105" x2="60" y2="105" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" />
+    
+    <line x1="105" y1="75" x2="155" y2="75" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" />
+    <line x1="105" y1="90" x2="150" y2="90" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" />
+    <line x1="105" y1="105" x2="140" y2="105" stroke="#CBD5E1" stroke-width="3" stroke-linecap="round" />
+    
+    <!-- Punggung Buku -->
+    <line x1="90" y1="58" x2="90" y2="136" stroke="#0284C7" stroke-width="4" />
+  </g>
+
+  <!-- Obor Pendidikan & Pena di Tengah Atas -->
+  <g transform="translate(185, 100)">
+    <path d="M15 0 C5 15 25 30 15 45 C5 30 25 15 15 0 Z" fill="url(#gradGold)" />
+    <circle cx="15" cy="22" r="5" fill="#EF4444" />
+  </g>
+
+  <!-- Teks Melingkar Atas: SMPN 3 CIBUNGBULANG -->
+  <path id="textArcTop" d="M 60,200 A 140,140 0 0,1 340,200" fill="none" />
+  <text fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" letter-spacing="4">
+    <textPath href="#textArcTop" startOffset="50%" text-anchor="middle">
+      SMPN 3 CIBUNGBULANG
+    </textPath>
+  </text>
+
+  <!-- Pita Banner Bawah: PERPUSTAKAAN -->
+  <g transform="translate(60, 310)">
+    <rect x="0" y="0" width="280" height="42" rx="21" fill="url(#gradBlue)" filter="url(#shadow)" />
+    <text x="140" y="27" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="3" text-anchor="middle">
+      PERPUSTAKAAN DIGITAL
+    </text>
+  </g>
+</svg>

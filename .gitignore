@@ -1,0 +1,55 @@
+# ==============================================================================
+# Git Ignore Configuration - Perpustakaan SMPN 3 CIBUNGBULANG
+# Sesuai Standar SoftwareEngineer.md & AGENTS.md (Clean Remote Shield)
+# ==============================================================================
+
+# 1. Kredensial & Konfigurasi Lingkungan Sensitif
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+config/sysconfig.local.inc.php
+!config/sysconfig.local.inc.php.example
+
+# 2. Direktori & Metadata AI (Internal Shield - Tidak Boleh Masuk Remote)
+.agents/
+.gemini/
+.brain/
+.system_generated/
+AGENTS.md
+GEMINI.md
+SoftwareEngineer.md
+implementation_plan.md
+walkthrough.md
+
+# 3. File Markdown Internal (HANYA README.md yang diizinkan untuk remote)
+*.md
+!README.md
+!readme.md
+
+# 4. Direktori Upload & File Sementara SLiMS
+images/persons/
+images/docs/
+files/
+repository/
+upgrade/
+install/
+*.log
+*.tmp
+*.bak
+*.sql
+!database/seed_smpn3.sql
+!database/schema_smpn3.sql
+
+# 5. Dependensi Vendor & Composer
+/vendor/
+node_modules/
+
+# 6. File Sistem Operasi & Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

@@ -1,0 +1,43 @@
+<?php
+/**
+ * ==============================================================================
+ * Konfigurasi Kustom Lokal SLiMS 9 Bulian - SMPN 3 CIBUNGBULANG
+ * Standar Rekayasa: SoftwareEngineer.md & AGENTS.md
+ * 
+ * Petunjuk: Salin file ini menjadi `sysconfig.local.inc.php` pada server fisik
+ * dan sesuaikan kredensial basis data sesuai instalasi MariaDB/MySQL server.
+ * ==============================================================================
+ */
+
+// 1. Parameter Koneksi Basis Data
+define('DB_HOST', getenv('DB_HOST') ?: '127.0.0.1');
+define('DB_PORT', getenv('DB_PORT') ?: '3306');
+define('DB_NAME', getenv('DB_NAME') ?: 'db_perpus_smpn3');
+define('DB_USERNAME', getenv('DB_USERNAME') ?: 'root');
+define('DB_PASSWORD', getenv('DB_PASSWORD') ?: '');
+
+// 2. Identitas Lembaga & Branding Sekolah (SSOT)
+$sysconf['library_name'] = 'SMPN 3 CIBUNGBULANG';
+$sysconf['library_subname'] = 'Perpustakaan Digital & Pusat Sumber Belajar';
+
+// 3. Tema OPAC Default
+// Mengarahkan ke tema kustom modern yang telah disesuaikan
+$sysconf['template']['theme'] = 'smpn3_bulian';
+$sysconf['template']['css'] = $sysconf['template']['dir'] . '/' . $sysconf['template']['theme'] . '/style.css';
+
+// 4. Pengaturan Bahasa & Lokalisasi
+$sysconf['default_lang'] = 'id_ID';
+
+// 5. Pengaturan Keamanan Server Fisik
+// Nonaktifkan pelaporan error mentah di antarmuka publik
+$sysconf['debug'] = false;
+ini_set('display_errors', '0');
+error_reporting(0);
+
+// 6. Aturan Sirkulasi & Presensi Siswa
+$sysconf['visitor_counter'] = true;
+$sysconf['quick_return'] = true;
+$sysconf['allow_loan_fine'] = true;
+
+// 7. Direktori Penyimpanan Aset Sekolah
+$sysconf['upload_dir'] = 'files';

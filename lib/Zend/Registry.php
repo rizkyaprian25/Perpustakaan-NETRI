@@ -197,13 +197,14 @@ class Zend_Registry extends ArrayObject
 
     /**
      * @param string $index
-     * @returns mixed
+     * @return bool
      *
-     * Workaround for http://bugs.php.net/bug.php?id=40442 (ZF-960).
+     * Kompatibilitas PHP 8.0+: Menghindari TypeError array_key_exists pada objek
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($index)
     {
-        return array_key_exists($index, $this);
+        return parent::offsetExists($index);
     }
 
 }

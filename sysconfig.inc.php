@@ -202,8 +202,8 @@ $sysconf['ajaxsec_ip_allowed'] = '';
 /* session login timeout in second */
 $sysconf['session_timeout'] = 7200;
 
-/* default application language */
-$sysconf['default_lang'] = 'en_US';
+/* default application language (Bahasa Indonesia untuk SMPN 3 Cibungbulang) */
+$sysconf['default_lang'] = 'id_ID';
 $sysconf['spellchecker_enabled'] = true;
 
 /* HTTP header */
@@ -579,7 +579,7 @@ $localisation->load(function($memory) use($dbs, &$sysconf) {
             if ($lang_dbs_res && ($lang_val = unserialize($lang_dbs_res['setting_value']))) {
                 $_SESSION['lang'] = $lang_val;
             } else {
-                $_SESSION['lang'] = 'en_US'; // Fallback to English
+                $_SESSION['lang'] = 'id_ID'; // Standar Bahasa Indonesia
             }
         }
 

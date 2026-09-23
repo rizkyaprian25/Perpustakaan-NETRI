@@ -18,7 +18,8 @@ INSERT INTO `setting` (`setting_name`, `setting_value`) VALUES
 ('auto_coll_type', 's:1:\"1\";'),
 ('allow_loan_fine', 's:1:\"1\";'),
 ('opac_result_num', 's:2:\"12\";'),
-('visitor_counter', 's:1:\"1\";')
+('visitor_counter', 's:1:\"1\";'),
+('default_lang', 's:5:\"id_ID\";')
 ON DUPLICATE KEY UPDATE `setting_value` = VALUES(`setting_value`);
 
 -- 2. Tipe Keanggotaan Khusus Jenjang SMP (`mst_member_type`)
@@ -81,3 +82,22 @@ UPDATE `user` SET
   `passwd` = '$2y$10$KuGrXwvfIv5wHMXbeYitC.9.EJnxwZMyHpiGVdMt7pEkBEdn5qgby',
   `last_update` = NOW()
 WHERE `username` = 'admin';
+
+-- 7. Lokalisasi Konten Web Perpustakaan ke Bahasa Indonesia
+UPDATE `content` SET 
+  `content_title` = 'Informasi Perpustakaan',
+  `content_desc` = '<h3>Profil & Kontak Perpustakaan</h3><p><strong>Nama Sekolah :</strong> SMP Negeri 3 Cibungbulang<br /><strong>Alamat :</strong> Jl. Kapten Dasuki Bakri, Cibatok 1, Kec. Cibungbulang, Kab. Bogor, Jawa Barat 16630<br /><strong>Telepon :</strong> (0251) 8645000<br /><strong>Email :</strong> perpustakaan@smpn3cibungbulang.sch.id<br /><strong>Website :</strong> http://smpn3cibungbulang.sch.id</p><h3>Jam Layanan Perpustakaan</h3><p><strong>Senin - Kamis :</strong> 07.30 - 15.00 WIB (Istirahat: 12.00 - 13.00 WIB)<br /><strong>Jumat :</strong> 07.30 - 11.30 & 13.00 - 15.00 WIB<br /><strong>Sabtu - Minggu :</strong> Tutup / Libur</p><h3>Koleksi Perpustakaan</h3><p>Perpustakaan SMPN 3 Cibungbulang menyediakan Buku Pelajaran Paket Kurikulum Merdeka (Kelas 7, 8, 9), Buku Referensi Ensiklopedia, Karya Sastra & Fiksi Remaja, Non-Fiksi Populer, dan Koleksi Digital PDF.</p><h3>Ketentuan Keanggotaan</h3><p>Seluruh siswa dan guru terdaftar otomatis menggunakan NISN/NIP dengan hak pinjam 3 buku selama 7 hari kalender.</p>',
+  `last_update` = NOW()
+WHERE `content_path` = 'libinfo';
+
+UPDATE `content` SET 
+  `content_title` = 'Bantuan & Panduan Pencarian',
+  `content_desc` = '<h3>Panduan Pencarian Katalog (OPAC)</h3><p>Gunakan kotak pencarian utama untuk <strong>Pencarian Sederhana</strong> dengan mengetikkan judul buku, nama pengarang, atau topik pelajaran. Untuk pencarian terarah, gunakan <strong>Pencarian Spesifik</strong> untuk menyaring berdasarkan judul, pengarang, subjek, nomor panggil/ISBN, atau lokasi rak buku.</p>',
+  `last_update` = NOW()
+WHERE `content_path` = 'help';
+
+UPDATE `content` SET 
+  `content_title` = 'Informasi Beranda',
+  `content_desc` = '<p>Selamat datang di Katalog Akses Publik Daring (OPAC) <strong>Perpustakaan SMP Negeri 3 Cibungbulang</strong>. Temukan buku pelajaran, ensiklopedia referensi, dan karya fiksi untuk memperkaya ilmu dan wawasan Anda.</p>',
+  `last_update` = NOW()
+WHERE `content_path` = 'headerinfo';

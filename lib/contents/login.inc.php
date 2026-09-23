@@ -123,12 +123,11 @@ if (isset($_POST['logMeIn'])) {
                 ->withSamesite('Lax')
                 ->set('admin_logged_in', TRUE);
 
-        // Set admin language cookie if available
-        if ($defaultLang = $logon->getData('template')['default_lang'] ?? null) {
-            Cookie::withPath(SWB . 'admin')
-                ->withExpires(time() + 14400)
-                ->set('admin_lang', $defaultLang);
-        }
+        // Set admin language cookie (Bahasa Indonesia untuk SMPN 3 Cibungbulang)
+        $adminLang = $logon->getData('template')['default_lang'] ?? ($sysconf['default_lang'] ?? 'id_ID');
+        Cookie::withPath(SWB . 'admin')
+            ->withExpires(time() + 14400)
+            ->set('admin_lang', $adminLang);
 
         // write log
         writeLog('staff', $username, 'Login', 'Login success for user ' . $username . ' from address ' . ip());

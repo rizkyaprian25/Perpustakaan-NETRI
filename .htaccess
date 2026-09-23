@@ -16,9 +16,10 @@
 # Don't show directory listings for URLs which map to a directory.
 Options -Indexes
 
-# Follow symbolic links in this directory.
-# Options +FollowSymLinks
-Options +SymLinksIfOwnerMatch
+# Follow symbolic links in this directory (kompatibel Apache Windows & Linux)
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+</IfModule>
 
 # Force simple error message for requests for non-existent favicon.ico.
 <Files favicon.ico>

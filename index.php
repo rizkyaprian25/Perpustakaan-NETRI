@@ -40,7 +40,7 @@ do_checkIP('opac');
 
 // member session params
 require LIB.'member_session.inc.php';
-if ($sysconf['template']['base'] == 'html') {
+if (($sysconf['template']['base'] ?? 'php') == 'html') {
   require SIMBIO.'simbio_GUI/template_parser/simbio_template_parser.inc.php';
 }
 

@@ -15,22 +15,22 @@ $status_type = 'info';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['member_id'])) {
     $member_id = trim($_POST['member_id']);
+    $safe_id = $dbs->escape_string($member_id);
     
-    // Validasi data anggota di basis data
-    $stmt = $dbs->prepare("SELECT member_id, member_name, member_type_id FROM member WHERE member_id = ?");
-    $stmt->execute([$member_id]);
-    $member = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Validasi data anggota di basis data menggunakan mysqli
+    $query = $dbs->query("SELECT member_id, member_name, member_type_id FROM member WHERE member_id = '{$safe_id}'");
+    $member = ($query && $query->num_rows > 0) ? $query->fetch_assoc() : null;
 
     if ($member) {
-        // Catat kunjungan ke tabel visitor_count
-        $insert = $dbs->prepare("INSERT INTO visitor_count (member_id, checkin_date) VALUES (?, NOW())");
-        $insert->execute([$member_id]);
+        // Catat kunjungan ke tabel visitor_count dengan nama anggota
+        $safe_name = $dbs->escape_string($member['member_name']);
+        $dbs->query("INSERT INTO visitor_count (member_id, member_name, checkin_date) VALUES ('{$safe_id}', '{$safe_name}', NOW())");
         $message = "Selamat Datang, <strong>" . htmlspecialchars($member['member_name']) . "</strong>! Kunjungan Anda berhasil dicatat.";
         $status_type = 'success';
     } else {
         // Catat sebagai pengunjung non-anggota jika nomor tidak ditemukan
-        $insert = $dbs->prepare("INSERT INTO visitor_count (member_id, checkin_date) VALUES (?, NOW())");
-        $insert->execute([$member_id]);
+        $guest_name = $dbs->escape_string("Tamu (" . $member_id . ")");
+        $dbs->query("INSERT INTO visitor_count (member_id, member_name, institution, checkin_date) VALUES ('{$safe_id}', '{$guest_name}', 'Tamu Luar / Umum', NOW())");
         $message = "Terima kasih! Kunjungan pengunjung nomor <strong>" . htmlspecialchars($member_id) . "</strong> telah dicatat.";
         $status_type = 'warning';
     }
@@ -40,9 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['member_id'])) {
 $today_count = 0;
 try {
     $count_query = $dbs->query("SELECT COUNT(*) AS total FROM visitor_count WHERE DATE(checkin_date) = CURDATE()");
-    if ($count_query) {
-        $row = $count_query->fetch(PDO::FETCH_ASSOC);
-        $today_count = $row['total'] ?? 0;
+    if ($count_query && ($row = $count_query->fetch_assoc())) {
+        $today_count = (int)$row['total'];
     }
 } catch (Exception $e) {
     // Fallback jika database belum aktif

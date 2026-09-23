@@ -9,3 +9,4 @@ $sysconf['template']['version']     = '1.0.0';
 $sysconf['template']['author']      = 'Tim IT SMPN 3 Cibungbulang';
 $sysconf['template']['description'] = 'Tema OPAC Modern, Bersih, dan Responsif berakar pada prinsip Apple Human Interface Guidelines untuk Perpustakaan SMPN 3 Cibungbulang.';
 $sysconf['template']['preview']     = 'preview.png';
+$sysconf['template']['base']        = 'php';

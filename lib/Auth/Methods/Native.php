@@ -89,8 +89,8 @@ class Native extends Contract
             u.user_id as uid, u.username as uname, u.passwd,
             u.realname as realname, u.groups, u.user_image as upict, u.`2fa`, u.admin_template as template
             FROM user AS u
-            WHERE u.username=?
-        SQL, [$this->username]);
+            WHERE u.username=? OR u.email=?
+        SQL, [$this->username, $this->username]);
 
         if ($user->count() < 1) throw new Exception(!empty($error = $user->getError()) ? $error : __('Username not exists in database!'), 404);
 

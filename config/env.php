@@ -1,6 +1,6 @@
 <?php
-$env = "development";
-$conditional_environment = "development";
+$env = getenv('APP_ENV') ?: "production";
+$conditional_environment = "production";
 $based_on_ip = false;
 $range_ip = [''];
 if ($based_on_ip) {

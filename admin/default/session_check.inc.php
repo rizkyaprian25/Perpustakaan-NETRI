@@ -27,11 +27,10 @@ if (INDEX_AUTH != 1) {
 
 $validator = new \SLiMS\Auth\Validator(config('auth.methods.' . config('auth.sections.user'), \SLiMS\Auth\Methods\Native::class));
 
-// check session
+// Periksa status login pengguna (Redirect mulus tanpa pop-up alert yang mengganggu)
 $unauthorized = !$validator->isUserLoggedIn();
 if ($unauthorized) {
     $msg = '<script type="text/javascript">'."\n";
-    $msg .= 'alert(\''.__('You are not authorized to view this section').'\');'."\n";
     $msg .= 'top.location.href = \''.SWB.'index.php?p=login\';'."\n";
     $msg .= '</script>'."\n";
     

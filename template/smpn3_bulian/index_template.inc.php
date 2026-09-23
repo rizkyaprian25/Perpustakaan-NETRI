@@ -18,6 +18,11 @@ $school_subname  = 'Perpustakaan Digital & Pusat Sumber Belajar';
 $school_address  = 'Jl. Kapten Dasuki Bakri, Cibatok 1, Kec. Cibungbulang, Kab. Bogor 16630';
 $school_phone    = '(0251) 8645000';
 $school_email    = 'perpustakaan@smpn3cibungbulang.sch.id';
+
+// Evaluasi apakah pengunjung berada di Beranda Utama
+$current_page    = $_GET['p'] ?? '';
+$is_search       = !empty($_GET['search']) || !empty($_GET['keywords']) || !empty($_GET['title']);
+$is_homepage     = empty($current_page) && !$is_search && empty($_GET['id']);
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -36,7 +41,7 @@ $school_email    = 'perpustakaan@smpn3cibungbulang.sch.id';
   <link rel="apple-touch-icon" href="images/smpn3_logo.svg">
 
   <!-- Core Theme Stylesheet -->
-  <link rel="stylesheet" href="template/smpn3_bulian/style.css?v=1.0.0">
+  <link rel="stylesheet" href="template/smpn3_bulian/style.css?v=1.1.0">
   
   <?php echo $metadata ?? ''; ?>
 </head>
@@ -57,19 +62,23 @@ $school_email    = 'perpustakaan@smpn3cibungbulang.sch.id';
 
         <!-- Menu Navigasi -->
         <nav class="main-nav" aria-label="Navigasi Utama">
-          <a href="index.php" class="nav-link active">
+          <a href="index.php" class="nav-link <?php echo $is_homepage ? 'active' : ''; ?>">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
             <span>Katalog OPAC</span>
           </a>
-          <a href="index.php?p=visitor" class="nav-link" title="Presensi Kunjungan">
+          <a href="visitor_kiosk.php" class="nav-link" title="Anjungan Presensi Pengunjung">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
             <span>Buku Tamu</span>
           </a>
-          <a href="index.php?p=libinfo" class="nav-link" title="Informasi Perpustakaan">
+          <a href="index.php?p=libinfo" class="nav-link <?php echo $current_page === 'libinfo' ? 'active' : ''; ?>" title="Informasi Perpustakaan">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
             <span>Profil & Jam Buka</span>
           </a>
-          <a href="admin/index.php" class="nav-link nav-btn-admin" title="Masuk Area Staf Pustakawan">
+          <a href="index.php?p=help" class="nav-link <?php echo $current_page === 'help' ? 'active' : ''; ?>" title="Panduan Pencarian">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            <span>Bantuan</span>
+          </a>
+          <a href="index.php?p=login" class="nav-link nav-btn-admin <?php echo $current_page === 'login' ? 'active' : ''; ?>" title="Masuk Area Staf Pustakawan">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             <span>Login Staf</span>
           </a>
@@ -78,7 +87,8 @@ $school_email    = 'perpustakaan@smpn3cibungbulang.sch.id';
     </div>
   </header>
 
-  <!-- 2. Hero Section & Pencarian OPAC Cepat -->
+  <?php if ($is_homepage): ?>
+  <!-- 2. Hero Section & Pencarian OPAC Cepat (Khusus Beranda) -->
   <section class="hero-section">
     <div class="container">
       <div class="hero-badge">
@@ -119,7 +129,7 @@ $school_email    = 'perpustakaan@smpn3cibungbulang.sch.id';
   <section class="quick-categories">
     <div class="container">
       <div class="categories-grid">
-        <a href="index.php?keywords=Buku+Paket&search=search" class="cat-card">
+        <a href="index.php?keywords=Matematika&search=search" class="cat-card">
           <div class="cat-icon-wrapper">📚</div>
           <div class="cat-info">
             <h3>Buku Pelajaran</h3>
@@ -143,7 +153,7 @@ $school_email    = 'perpustakaan@smpn3cibungbulang.sch.id';
           </div>
         </a>
 
-        <a href="index.php?p=visitor" class="cat-card">
+        <a href="visitor_kiosk.php" class="cat-card">
           <div class="cat-icon-wrapper">✍️</div>
           <div class="cat-info">
             <h3>Presensi Pengunjung</h3>
@@ -153,9 +163,27 @@ $school_email    = 'perpustakaan@smpn3cibungbulang.sch.id';
       </div>
     </div>
   </section>
+  <?php else: ?>
+  <!-- Subpage Compact Header Search Bar -->
+  <section class="subpage-search-bar">
+    <div class="container">
+      <div class="subpage-search-inner">
+        <a href="index.php" class="btn-back-home" title="Kembali ke Beranda">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Beranda</span>
+        </a>
+        <form action="index.php" method="get" class="compact-search-form" role="search">
+          <input type="hidden" name="search" value="search">
+          <input type="text" name="keywords" class="compact-search-input" placeholder="Cari buku lain..." value="<?php echo htmlspecialchars($_GET['keywords'] ?? ''); ?>" autocomplete="off">
+          <button type="submit" class="btn-compact-search">Cari</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <?php endif; ?>
 
   <!-- 4. Area Konten Utama (Hasil Pencarian / Halaman SLiMS) -->
-  <main class="main-content">
+  <main class="main-content <?php echo $is_homepage ? 'homepage-main' : 'subpage-main'; ?>">
     <div class="container">
       <div id="main-content">
         <?php echo $main_content; ?>

@@ -482,3 +482,319 @@ body {
     display: none;
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* Subpage Header & Compact Search Bar                                       */
+/* -------------------------------------------------------------------------- */
+.subpage-search-bar {
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 14px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.subpage-search-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.btn-back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--bg-page);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.btn-back-home:hover {
+  background: var(--border-subtle);
+  color: var(--color-primary);
+  transform: translateX(-2px);
+}
+
+.compact-search-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  max-width: 540px;
+}
+
+.compact-search-input {
+  flex: 1;
+  height: 42px;
+  padding: 0 16px;
+  background: var(--bg-page);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.92rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.compact-search-input:focus {
+  border-color: var(--color-accent);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+.btn-compact-search {
+  height: 42px;
+  padding: 0 20px;
+  background: var(--color-accent);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-compact-search:hover {
+  background: var(--color-accent-hover);
+}
+
+/* -------------------------------------------------------------------------- */
+/* Form Login Pustakawan & Staf (Apple HIG Card)                             */
+/* -------------------------------------------------------------------------- */
+#loginForm {
+  max-width: 440px;
+  margin: 32px auto;
+  padding: 36px 32px;
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-subtle);
+}
+
+#loginForm::before {
+  content: "🔐 Area Masuk Staf & Pustakawan";
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+#loginForm .heading1 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+
+#loginForm .login_input {
+  margin-bottom: 18px;
+}
+
+#loginForm .login_input input[type="text"],
+#loginForm .login_input input[type="password"] {
+  width: 100%;
+  height: 46px;
+  padding: 10px 14px;
+  border: 1.5px solid #CBD5E1;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: #F8FAFC;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+#loginForm .login_input input:focus {
+  border-color: var(--color-accent);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+}
+
+#loginForm .remember_forgot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+#loginForm .remember label {
+  cursor: pointer;
+  margin-left: 6px;
+  user-select: none;
+}
+
+#loginForm .marginTop {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+#loginForm .loginButton {
+  flex: 2;
+  height: 46px;
+  background: var(--color-accent);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: 0 2px 4px rgba(2, 132, 199, 0.25);
+}
+
+#loginForm .loginButton:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+#loginForm .homeButton {
+  flex: 1;
+  height: 46px;
+  background: #F1F5F9;
+  color: var(--text-secondary);
+  border: 1px solid #CBD5E1;
+  border-radius: var(--radius-sm);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  line-height: 44px;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+#loginForm .homeButton:hover {
+  background: #E2E8F0;
+  color: var(--color-primary);
+}
+
+#loginForm .alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+#loginForm .alert-danger {
+  background: #FEF2F2;
+  color: #DC2626;
+  border: 1px solid #FCA5A5;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Katalog OPAC & Hasil Pencarian Buku                                        */
+/* -------------------------------------------------------------------------- */
+.item.card {
+  background: #FFFFFF;
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--border-subtle) !important;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: var(--transition-fast);
+}
+
+.item.card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: #CBD5E1 !important;
+}
+
+.item.card .card-link {
+  color: var(--color-primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.item.card .card-link:hover {
+  color: var(--color-accent);
+}
+
+.item.card .authors a {
+  display: inline-block;
+  padding: 3px 10px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  background: #F1F5F9;
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #E2E8F0;
+  transition: var(--transition-fast);
+}
+
+.item.card .authors a:hover {
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border-color: #BAE6FD;
+}
+
+.availability {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  background: #F8FAFC;
+  padding: 10px;
+}
+
+.availability .label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.availability .value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #10B981;
+}
+
+.availability .value.text-danger {
+  color: #EF4444;
+}
+
+/* Detail Buku */
+.blockquote {
+  border-left: 4px solid var(--color-accent);
+  padding-left: 16px;
+  margin: 16px 0;
+}
+
+.blockquote-footer {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+dl.row dt {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+dl.row dd {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+

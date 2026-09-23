@@ -803,5 +803,10 @@ $sanitizer = \SLiMS\Sanitizer::fromGlobal(config('custom_sanitizer_options', [
   'csp','auth'
 ]);
 
+// Muat konfigurasi kustom lokal jika file sysconfig.local.inc.php tersedia
+if (file_exists(SB.'config'.DS.'sysconfig.local.inc.php')) {
+    include SB.'config'.DS.'sysconfig.local.inc.php';
+}
+
 // sysconfig ini hook execution
 $plugins->execute(Plugins::SYSCONFIG_ALL_INIT, [&$sysconf]);
